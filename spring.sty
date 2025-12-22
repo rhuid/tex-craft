@@ -1,0 +1,70 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{spring}[2025/03/22 Personal academic LaTeX setup]
+
+% --------------------------------------------------
+% Page geometry
+% --------------------------------------------------
+\RequirePackage[
+  left=1.25in,
+  right=1.25in,
+  top=1.2in,
+  bottom=1in
+]{geometry}
+
+% --------------------------------------------------
+% Paragraph formatting
+% --------------------------------------------------
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{15pt}
+
+% --------------------------------------------------
+% Fonts (XeLaTeX / LuaLaTeX only)
+% --------------------------------------------------
+\RequirePackage{fontspec}
+\RequirePackage{unicode-math}
+
+% Monospace font
+\setmonofont[Scale=MatchLowercase]{Iosevka}
+
+% Main (serif) font
+\setmainfont[
+  ItalicFont=NewCM10-Italic.otf,
+  BoldFont=NewCM10-Bold.otf,
+  BoldItalicFont=NewCM10-BoldItalic.otf,
+  SmallCapsFeatures={Numbers=OldStyle}
+]{NewCM10-Regular.otf}
+
+% Sans-serif font
+\setsansfont[
+  ItalicFont=NewCMSans10-Oblique.otf,
+  BoldFont=NewCMSans10-Bold.otf,
+  BoldItalicFont=NewCMSans10-BoldOblique.otf,
+  SmallCapsFeatures={Numbers=OldStyle}
+]{NewCMSans10-Regular.otf}
+
+% Math font
+\setmathfont{NewCMMath-Regular.otf}
+
+% --------------------------------------------------
+% Lists
+% --------------------------------------------------
+\RequirePackage{enumitem}
+\setlist{
+  topsep=6pt,
+  itemsep=3pt,
+  parsep=0pt,
+  partopsep=0pt,
+  leftmargin=*
+}
+
+% --------------------------------------------------
+% Verbatim and Lean blocks
+% --------------------------------------------------
+\RequirePackage{fancyvrb}
+
+\newenvironment{leanblock}
+  {\VerbatimEnvironment
+   \begin{center}\begin{BVerbatim}}
+  {\end{BVerbatim}\end{center}}
+
+\endinput
