@@ -14,17 +14,14 @@
 % --------------------------------------------------
 % Paragraph formatting
 % --------------------------------------------------
-\setlength{\parskip}{0pt}
-\setlength{\parindent}{15pt}
+\setlength{\parskip}{0pt}      % no extra space between paragraphs
+\setlength{\parindent}{15pt}   % indentation at the start of each paragraph
 
 % --------------------------------------------------
 % Fonts (XeLaTeX / LuaLaTeX only)
 % --------------------------------------------------
 \RequirePackage{fontspec}
 \RequirePackage{unicode-math}
-
-% Monospace font
-\setmonofont[Scale=MatchLowercase]{Iosevka}
 
 % Main (serif) font
 \setmainfont[
@@ -42,8 +39,14 @@
   SmallCapsFeatures={Numbers=OldStyle}
 ]{NewCMSans10-Regular.otf}
 
-% Math font
+% Monospace font
+\setmonofont[Scale=MatchLowercase]{Iosevka}
+% \setmonofont[Scale=0.9]{FreeMono}
+
+% % Math font
 \setmathfont{NewCMMath-Regular.otf}
+
+% \RequirePackage{cmbright}
 
 % --------------------------------------------------
 % Lists
@@ -58,13 +61,24 @@
 }
 
 % --------------------------------------------------
-% Verbatim and Code blocks
+% Minted and code blocks
 % --------------------------------------------------
-\RequirePackage{fancyvrb}
+\usepackage{minted}
+\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
+\newmintinline[lean]{lean4}{bgcolor=white}
+\newminted[leancode]{lean4}{fontsize=\normalsize}
+\usemintedstyle{solarized-light} % other options: arduino, emacs, autumn, tango
 
-\newenvironment{codeblock}
+\newenvironment{leanblock}
   {\VerbatimEnvironment
-   \begin{center}\begin{BVerbatim}}
-  {\end{BVerbatim}\end{center}}
+   \begin{center}\begin{leancode}}
+  {\end{leancode}\end{center}}
+
+% \RequirePackage{fancyvrb}
+
+% \newenvironment{codeblock}
+%   {\VerbatimEnvironment
+%    \begin{center}\begin{BVerbatim}}
+%   {\end{BVerbatim}\end{center}}
 
 \endinput
